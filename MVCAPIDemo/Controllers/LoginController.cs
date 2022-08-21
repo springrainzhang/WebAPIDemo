@@ -6,6 +6,7 @@ namespace MVCAPIDemo.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    //[Route("[controller]/[Action]")]
     public class LoginController : ControllerBase
     {
         private readonly IUserActions userActions;
@@ -22,12 +23,13 @@ namespace MVCAPIDemo.Controllers
             return userList;
         }
 
-        //[HttpGet("{userNo}/{password}")]
-        //public UserInfo GetLoginRes(string userNo, string password)
-        //{
-        //    UserInfo user = userActions.CheckLogin(userNo, password);
-        //    return user;
-        //}
+        [HttpGet]
+        [Route("{userNo:int}/{password=111}")]
+        public UserInfo GetLoginRes(string userNo, string password)
+        {
+            UserInfo user = userActions.CheckLogin(userNo, password);
+            return user;
+        }
 
         [HttpPost]
         public string Insert(UserInfo user)
