@@ -10,16 +10,19 @@ namespace MVCAPIDemo.Controllers
     public class LoginController : ControllerBase
     {
         private readonly IUserActions userActions;
+        private readonly ILogger<LoginController> logger;
 
-        public LoginController(IUserActions userActions)
+        public LoginController(IUserActions userActions, ILogger<LoginController> logger)
         {
             this.userActions = userActions;
+            this.logger = logger;
         }
 
         [HttpGet]
         public List<UserInfo> GetAll()
         {
             List<UserInfo> userList = userActions.GetAllUser();
+            logger.LogInformation(new EventId(1001), "Get all user");
             return userList;
         }
 

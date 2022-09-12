@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddSingleton<IUserActions, UserActions>();
+//builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
