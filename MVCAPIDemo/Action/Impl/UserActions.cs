@@ -16,7 +16,7 @@ namespace MVCAPIDemo.Action.Impl
         {
             db.Add(user);
             var res = db.SaveChanges();
-            if(res == 0)
+            if(res == 1)
             {
                 return "add user success";
             } 
