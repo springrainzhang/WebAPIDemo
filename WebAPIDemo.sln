@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVCAPIDemo", "MVCAPIDemo\MVCAPIDemo.csproj", "{B19D33E6-6C59-480B-A8A9-D3BDF2A78A2A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ＭinimalAPIDemo", "ＭinimalAPIDemo\ＭinimalAPIDemo.csproj", "{675452FB-028B-40ED-86E5-C38426388F46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ＭinimalAPIDemo", "ＭinimalAPIDemo\ＭinimalAPIDemo.csproj", "{675452FB-028B-40ED-86E5-C38426388F46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

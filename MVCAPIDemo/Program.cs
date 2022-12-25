@@ -24,7 +24,7 @@ app.Use(async (context, next) =>
     var idQuery = context.Request.RouteValues["userNo"];
     if (idQuery != null && idQuery.Equals("1"))
     {
-         context.Response.Headers.Add("X-Tag", "This is super user");
+        context.Response.Headers.Add("X-Tag", "This is super user");
     }
 
     await next();
