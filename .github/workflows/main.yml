@@ -1,0 +1,34 @@
+name: MVCAPIDEMO.Dockerfile.Compile
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+env:
+   IMAGE_NAME: webapidemo
+   IMAGE_TAG: dockerfilebuild
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 7.0.x
+    - name: Login To Docker #登录到镜像仓库
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.IMAGESTORE_USERNAME }}
+        password: ${{ secrets.IMAGESTORE_PASSWORD }}
+        registry: webapitestcontainer2.azurecr.io #镜像仓库地址
+    - name: Build Docker Image # Build Docker镜像并推送到镜像仓库
+      uses: docker/build-push-action@v2
+      with:
+        tags: ${{env.IMAGE_NAME}}:${{env.IMAGE_TAG}}.${{ github.run_id }}.${{ github.run_number }} #动态变量镜像TAG 使用github运行job和jobid设置tag
+        file: ./MVCAPIDemo/Dockerfile # 指定Dockerfile
+        push: true
+    - name: Docker Images Lst # 列出所有镜像
+      run: docker images
